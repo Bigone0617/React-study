@@ -2,8 +2,16 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends React.Component<{name: string;}, {age: number}> {
-  constructor(prop: {name: string}) {
+export interface AppProp {
+  name: string
+}
+
+interface Appstate {
+  age: number
+} 
+
+class App extends React.Component<AppProp, Appstate> {
+  constructor(prop: AppProp) {
     super(prop)
     this.state = {
       age: 30
