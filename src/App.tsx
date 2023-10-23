@@ -8,6 +8,12 @@ class App extends React.Component<{name: string;}, {age: number}> {
     this.state = {
       age: 30
     }
+
+    setInterval(() => {
+      this.setState({
+        age : this.state.age + 1
+      })
+    }, 1000)
   }
 
   render(){
