@@ -26,9 +26,20 @@ class App extends React.Component<AppProp, Appstate> {
 
   render(){
     return ( 
-      <div className='App'>{this.props.name} {this.state.age}</div>
+      <>
+        <div className='App'>{this.props.name} {this.state.age}</div>
+        <StateLessComponent name="anna"/>
+      </>
     )
   }
+}
+
+
+// stateless component
+const StateLessComponent: React.FC<AppProp> = (props) => {
+  return (
+    <h2>{props.name}</h2>
+  )
 }
 
 export default App;
