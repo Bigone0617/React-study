@@ -3,9 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends React.Component<{name: string;}, {age: number}> {
-  public state: {age: number} = {
-    age: 30
-  };
+  constructor(prop: {name: string}) {
+    super(prop)
+    this.state = {
+      age: 30
+    }
+  }
 
   render(){
     return ( 
