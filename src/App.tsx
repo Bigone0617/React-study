@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 
 export interface AppProp {
-  name: string
+  name: string,
+  children?: React.ReactNode; // children을 optional로 변경
 }
 
 interface Appstate {
@@ -28,7 +29,9 @@ class App extends React.Component<AppProp, Appstate> {
     return ( 
       <>
         <div className='App'>{this.props.name} {this.state.age}</div>
-        <StateLessComponent name="anna"/>
+        <StateLessComponent name="anna">
+          <h2>hihi</h2>
+        </StateLessComponent>
       </>
     )
   }
@@ -38,7 +41,10 @@ class App extends React.Component<AppProp, Appstate> {
 // stateless component
 const StateLessComponent: React.FC<AppProp> = (props) => {
   return (
-    <h2>{props.name}</h2>
+    <>
+      <h2>{props.name}</h2>
+      {props.children}
+    </>
   )
 }
 
