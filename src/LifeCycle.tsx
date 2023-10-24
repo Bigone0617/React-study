@@ -41,12 +41,12 @@ class LifeCycle extends React.Component<LifeCycleProps,LifeCycleState>{
 
     // props를 지정했을 때 호출, state가 변경되어도 호출 안됨.
     // componentWillReceiveProps안에서 호출된 setState는 계속해서 shouldComponentUpdate 호출하는 것이 아닌 
-    // 한번에 모든 것을 변경시킴.
+    // 한번에 모든 것을 변경시킴. : 사용하면 안됨
     componentWillReceiveProps(nextProps: Readonly<LifeCycleProps>, nextContext: any): void {
         console.log('componentWillReceiveProps : ' + JSON.stringify(nextProps));
     }
     
-    // 컴퍼넌트가 재 렌더링 되기 전에 호출
+    // 컴퍼넌트가 재 렌더링 되기 전에 호출 : 사용하면 안됨
     componentWillUpdate(nextProps: Readonly<LifeCycleProps>, nextState: Readonly<LifeCycleState>, nextContext: any): void {
         console.log('componentWillUpdate : ' + JSON.stringify(nextProps));
     }
