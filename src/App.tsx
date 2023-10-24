@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import LifeCycle from './LifeCycle';
 
 export interface AppProp {
   name: string,
@@ -17,21 +18,20 @@ class App extends React.Component<AppProp, Appstate> {
     this.state = {
       age: 30
     }
-
-    setInterval(() => {
-      this.setState({
-        age : this.state.age + 1
-      })
-    }, 1000)
   }
 
   render(){
     return ( 
       <>
-        <div className='App'>{this.props.name} {this.state.age}</div>
-        <StateLessComponent name="anna">
-          <h2>hihi</h2>
-        </StateLessComponent>
+        <>
+          <div className='App'>{this.props.name} {this.state.age}</div>
+          <StateLessComponent name="anna">
+            <h2>hihi</h2>
+          </StateLessComponent>
+        </>
+        <>
+          <LifeCycle job="developer"/>
+        </>
       </>
     )
   }
