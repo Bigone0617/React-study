@@ -18,6 +18,12 @@ class App extends React.Component<AppProp, Appstate> {
     this.state = {
       age: 30
     }
+
+    setInterval(() => {
+      this.setState({
+        age : this.state.age + 1
+      })
+    }, 3000)
   }
 
   render(){
