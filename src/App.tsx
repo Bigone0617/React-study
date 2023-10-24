@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import UpdateUnderComponent from './updateComponent/UpdateUnderComponent';
+import UpdateUpperComponent from './updateComponent/UpdateUpperComponent';
 
 export interface AppProp {
   name: string,
@@ -18,11 +20,11 @@ class App extends React.Component<AppProp, Appstate> {
       age: 30
     }
 
-    setInterval(() => {
-      this.setState({
-        age : this.state.age + 1
-      })
-    }, 1000)
+    // setInterval(() => {
+    //   this.setState({
+    //     age : this.state.age + 1
+    //   })
+    // }, 1000)
   }
 
   render(){
@@ -32,6 +34,8 @@ class App extends React.Component<AppProp, Appstate> {
         <StateLessComponent name="anna">
           <h2>hihi</h2>
         </StateLessComponent>
+        <UpdateUnderComponent/>
+        <UpdateUpperComponent/>
       </>
     )
   }
