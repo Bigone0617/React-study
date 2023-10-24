@@ -5,6 +5,7 @@ import LifeCycle from './LifeCycle';
 import UpdateUnderComponent from './updateComponent/UpdateUnderComponent';
 import UpdateUpperComponent from './updateComponent/UpdateUpperComponent';
 import ListComponent from './todoLIst/ListComponent';
+import RFListComponent from './todoLIst/refactory/RFListComponent';
 
 export interface AppProp {
   name: string,
@@ -52,6 +53,7 @@ class App extends React.Component<AppProp, Appstate> {
         <UpdateUnderComponent/>
         <UpdateUpperComponent/> */}
         <ListComponent/>
+        <RFListComponent/>
       </>
     )
   }
