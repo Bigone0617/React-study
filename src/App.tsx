@@ -4,6 +4,8 @@ import './App.css';
 import LifeCycle from './LifeCycle';
 import UpdateUnderComponent from './updateComponent/UpdateUnderComponent';
 import UpdateUpperComponent from './updateComponent/UpdateUpperComponent';
+import ListComponent from './todoLIst/ListComponent';
+import RFListComponent from './todoLIst/refactory/RFListComponent';
 import RouterHome from './ReactRouter/RouterHome';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
@@ -51,7 +53,9 @@ class App extends React.Component<AppProp, Appstate> {
           <LifeCycle job="developer"/>
         </>
         <UpdateUnderComponent/>
-        <UpdateUpperComponent/> */}
+        <UpdateUpperComponent/>
+        <ListComponent/>
+        <RFListComponent/> */}
        <RouterHome/>
       </>
     )
