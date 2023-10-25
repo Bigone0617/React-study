@@ -4,6 +4,8 @@ import './App.css';
 import LifeCycle from './LifeCycle';
 import UpdateUnderComponent from './updateComponent/UpdateUnderComponent';
 import UpdateUpperComponent from './updateComponent/UpdateUpperComponent';
+import RouterHome from './ReactRouter/RouterHome';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 export interface AppProp {
   name: string,
@@ -36,7 +38,7 @@ class App extends React.Component<AppProp, Appstate> {
   render(){
     return ( 
       <>
-        <>
+        {/* <>
           <div className='App'>{this.props.name} {this.props.company} {this.state.age}</div>
           <StateLessComponent name="anna">
             <h2>hihi</h2>
@@ -49,7 +51,8 @@ class App extends React.Component<AppProp, Appstate> {
           <LifeCycle job="developer"/>
         </>
         <UpdateUnderComponent/>
-        <UpdateUpperComponent/>
+        <UpdateUpperComponent/> */}
+       <RouterHome/>
       </>
     )
   }
