@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { TodoProps } from "./RFListComponent";
 
-interface TodoProps {
-    id: string;
-    title: string;
-    description: string;
-}
 
 interface ChangeTodoListProps {
     removeTodoList(id: string): void;

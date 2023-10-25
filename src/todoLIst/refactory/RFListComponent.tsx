@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import RFTodoComponent from "./RFTodoComponent";
 
-interface TodoProps {
+export interface TodoProps {
     id: string;
     title: string;
     description: string;
