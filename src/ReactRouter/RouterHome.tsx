@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Routes, useParams, useLocation, useNavigate, useMatch, useMatches, useSearchParams } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Routes, useParams, useLocation, useNavigate, useMatch, useMatches, useSearchParams, Outlet } from 'react-router-dom';
 
 interface PostProps {
     name : string;
@@ -25,12 +25,22 @@ const Post:React.FC<PostProps> = ({...props}) => {
     // v6 전에는 props를 이용해서 받아옴.
     // ex) .../posts/:postId -> .../posts/30
     const params = useParams(); // 30
-    
+
     return (
         <div>
             <h2>Post {params.postId} {props?.name}</h2>
             <h2>queryString : {age}</h2>
             <button onClick={goNextPost}>다음 포스트</button>            
+        </div>
+    )
+}
+
+const PostList:React.FC<any> = ({...props}) => {
+    return (
+        <div>
+            {/* 중첩된 라우터의 하위 라우터를 outlet으로 호출 */}
+            <Outlet/>
+            <h3>list</h3>
         </div>
     )
 }
@@ -42,10 +52,14 @@ class RouterHome extends React.Component<{}, {}> {
                 <Routes>
                     <Route path="/" element={<h3>home</h3>}/>
                     <Route path="/intro" element={<h3>intro</h3>}/>
-                    <Route 
+                    {/* <Route 
                         path="/posts/:postId" 
                         element={<Post name="kim"/>}
-                    />
+                    /> */}
+                    {/* 중첩된 라우트를 사용할 때 */}
+                    <Route path="/posts" element={<PostList/>}>
+                        <Route path=':postId' element={<Post name="dd"/>}/>
+                    </Route>
                 </Routes>
                 <nav>
                     <ul>
