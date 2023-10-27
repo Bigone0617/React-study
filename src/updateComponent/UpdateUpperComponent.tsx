@@ -37,7 +37,7 @@ interface ParentProp {
     clickFromGrandChild(): void;
   }
   
-  const Parent: React.FC<ParentProp> = (props) => {
+  const Parent: React.FC<ParentProp> = (props: ParentProp) => {
     return (
       <div>
         <p>여긴 Parent</p>
@@ -50,7 +50,7 @@ interface ParentProp {
     clickFromGrandChild(): void;
   }
   
-  const Me: React.FC<MeProp> = (props) => {
+  const Me: React.FC<MeProp> = (props: MeProp) => {
     return (
       <div>
         <p>여긴 Me</p>
@@ -63,7 +63,7 @@ interface ParentProp {
     clickFromGrandChild(): void;
   }
   
-  const Child: React.FC<ChildProp> = (props) => {
+  const Child: React.FC<ChildProp> = (props: ChildProp) => {
     return (
       <div>
         <p>여긴 Child</p>
@@ -76,7 +76,7 @@ interface ParentProp {
     clickFromGrandChild(): void;
   }
   
-  const GrandChild: React.FC<GrandChildProp> = (props) => {
+  const GrandChild: React.FC<GrandChildProp> = (props: GrandChildProp) => {
     return (
       <div>
         <p>여긴 GrandChild</p>
