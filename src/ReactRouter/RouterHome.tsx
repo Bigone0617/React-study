@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Routes, useParams, useLocation, useNavigate, useMatch, useMatches, useSearchParams, Outlet } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Routes, useParams, useLocation, useNavigate, useMatch, useMatches, useSearchParams, Outlet, Navigate } from 'react-router-dom';
 
 interface PostProps {
     name : string;
@@ -36,11 +36,17 @@ const Post:React.FC<PostProps> = ({...props}) => {
 }
 
 const PostList:React.FC<any> = ({...props}) => {
+    // useNavigate 훅을 이용하여 경로 이동
+    // replace 옵션을 통해 history에 이력을 남길지 여부 
+    const navigate = useNavigate();
     return (
         <div>
             {/* 중첩된 라우터의 하위 라우터를 outlet으로 호출 */}
             <Outlet/>
             <h3>list</h3>
+            <button onClick={() => navigate('/posts/3')}>go to 3</button>
+            <button onClick={() => navigate('/posts/4', {replace: true})}>go to 4 히스토리 안남김</button>
+            <button onClick={() => navigate(-1)}>전페이지로</button>
         </div>
     )
 }
@@ -60,11 +66,14 @@ class RouterHome extends React.Component<{}, {}> {
                     <Route path="/posts" element={<PostList/>}>
                         <Route path=':postId' element={<Post name="dd"/>}/>
                     </Route>
+                    {/* Navigate를 이용하여 리다이렉션 */}
+                    <Route path="re" element={<Navigate to="/"></Navigate>}/>
                 </Routes>
                 <nav>
                     <ul>
                         <li><Link to="/">h</Link></li>
                         <li><Link to="/intro">i</Link></li>
+                        <li><Link to="/re">리다이렉트</Link></li>
                     </ul>
                 </nav>
             </Router>  
