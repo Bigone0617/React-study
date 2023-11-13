@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { TVedio } from "./ListHome";
-import { youtubeAPI } from "../../Const";
+// import { youtubeAPI } from "../../Const";
 
 const List: React.FC<{}> = () => {
   const navigate = useNavigate();
   const [vedioList, setVedioList] = useState<TVedio[]>([]);
 
-  useEffect(() => {
-    fetch(youtubeAPI)
-      .then((res) => res.json())
-      .then((res) => setVedioList(res?.items?.map((item) => item?.snippet)));
-  }, []);
+  // useEffect(() => {
+  //   fetch(youtubeAPI)
+  //     .then((res) => res.json())
+  //     .then((res) => setVedioList(res?.items?.map((item) => item?.snippet)));
+  // }, []);
 
   const onCickVedio = (vedioData: TVedio) => {
     navigate(`/youtubeList/${vedioData.channelTitle}`, {

@@ -9,11 +9,14 @@ import RFListComponent from './todoLIst/refactory/RFListComponent';
 import RouterHome from './ReactRouter/RouterHome';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import ListHome from './RouterProject/YoutubeList/ListHome';
+import { Store, Unsubscribe } from 'redux';
+import { addAge } from '.';
 
 export interface AppProp {
   name: string,
   children?: React.ReactNode; // children을 optional로 변경
   company?: string;
+  store?: Store<{age: number}>
 }
 
 interface Appstate {
@@ -21,6 +24,7 @@ interface Appstate {
 } 
 
 class App extends React.Component<AppProp, Appstate> {
+  private _unsubscribe: Unsubscribe;
   // optional props에 기본값 지정하기.
   static defaultProps = {
     company: 'Apple'
@@ -28,7 +32,7 @@ class App extends React.Component<AppProp, Appstate> {
   constructor(prop: AppProp) {
     super(prop)
     this.state = {
-      age: 30
+      age: this.props.store.getState().age
     }
 
     // setInterval(() => {
@@ -38,7 +42,23 @@ class App extends React.Component<AppProp, Appstate> {
     // }, 1000)
   }
 
+  componentDidMount(): void {
+      const store = this.props.store;
+      this._unsubscribe = store.subscribe(() => {
+        this.forceUpdate()
+      });
+  }
+
+  componentWillUnmount(): void {
+      this._unsubscribe();
+  }
+
+  
+
   render(){
+    const store  = this.props.store;
+    const state = store.getState();
+    
     return ( 
       <>
         {/* <>
@@ -58,7 +78,9 @@ class App extends React.Component<AppProp, Appstate> {
         <ListComponent/>
         <RFListComponent/> */}
        {/* <RouterHome/> */}
-       <ListHome/>
+       {/* <ListHome/> */}
+       {state.age}
+       <button onClick={() => store.dispatch(addAge())}>나이 먹이기</button>
       </>
     )
   }

@@ -3,13 +3,33 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Store, createStore} from 'redux';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const ADD_AGE = 'ADD_AGE';
+export function addAge() {
+  return {
+    type: ADD_AGE
+  }
+}
+
+function ageApp(state: {age: number;} = {age: 35}, action: {type: 'ADD_AGE',}) {
+  if(action.type === ADD_AGE) {
+    return {
+      age: state.age + 1
+    }
+  }
+  return state;
+}
+
+const store: Store<{age: number}> = createStore(ageApp);
+
 root.render(
   <React.StrictMode>
-    <App name="tell" />
+    <App name="tell" store={store}/>
   </React.StrictMode>
 );
 
